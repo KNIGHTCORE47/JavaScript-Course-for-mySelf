@@ -16,7 +16,7 @@ const anotherId = Symbol('69');
 
 console.log(id === anotherId);
 
-const bigNum = 312457893655423294542614546n;
+const bigNum = 312457893655423294542614546n;        // it helps to store massive numbers, scintific values.
 
 
 // NON_PRIMITIVE DATATYPE(Reference type)
