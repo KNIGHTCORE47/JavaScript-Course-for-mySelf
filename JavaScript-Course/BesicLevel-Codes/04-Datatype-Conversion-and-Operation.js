@@ -35,3 +35,9 @@ console.log(convertValuesomeNum);
 
 //Operations
 
+//string concatination
+let a = "chewra";
+let b = " anna";
+let c = a + b;
+
+console.log(c);
