@@ -10,11 +10,13 @@ accountEmail = "account123@hotmail.com";
 
 accountPassword = "acc#123Pass";
 
-accountCity = "Kolkata";
+accountCity = "Kolkata"; 
+
+let accountState;     //if we not initalize this variable it will give us undefined
 
 // console.log(accountId);
 
-console.table([accountId, accountEmail, accountPassword, accountCity]);
+console.table([accountId, accountEmail, accountPassword, accountCity, accountState]);
 
 
 /* 
