@@ -112,3 +112,17 @@ console.log(cornHub02.fullName.userName);
 
 console.log(cornHub02.fullName?.userName.uSurname);
 
+let objCon1 = {
+    1: "a",
+    2: "b",
+    3: "c",
+}
+
+let objCon2 = {
+    4: "d",
+    5: "e",
+    6: "f",
+}
+
+//with the help of assign parameter we can concat two object, which return a newly created object
+let objConCat = Object.assign({}, objCon1, objCon2)
