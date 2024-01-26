@@ -113,16 +113,66 @@ console.log(cornHub02.fullName.userName);
 console.log(cornHub02.fullName?.userName.uSurname);
 
 let objCon1 = {
-    1: "a",
-    2: "b",
-    3: "c",
+    1 : "a",
+    2 : "b",
+    3 : "c",
 }
 
 let objCon2 = {
-    4: "d",
-    5: "e",
-    6: "f",
+    4 : "d",
+    5 : "e",
+    6 : "f",
 }
 
-//with the help of assign parameter we can concat two object, which return a newly created object
-let objConCat = Object.assign({}, objCon1, objCon2)
+let objCon3 = {
+    7 : "g",
+    8 : "h",
+    9 : "i",
+}
+
+//with the help of assign method where it need two parameter which are 1st - terget and 2nd one is source, we can concat two objects which return a newly created object
+
+let objAssign = Object.assign({}, objCon1, objCon2, objCon3);
+
+console.log(objAssign);
+
+// with the help of spread operator
+
+let objSpread = {...objCon1, ...objCon2};
+
+console.log(objSpread);
+
+//to access database values
+
+const users = [
+    {
+        id : "user1",
+        emailId : "abc@gmail.com",
+        isLoggedIn : false,
+    },
+    {
+        id : "user2",
+        emailId : "def@gmail.com",
+        isLoggedIn : false,
+    },
+    {
+        id : "user3",
+        emailId : "ghi@gmail.com",
+        isLoggedIn : true,
+    },
+    {
+        id : "user4",
+        emailId : "jkl@gmail.com",
+        isLoggedIn : false,
+    }
+]
+
+console.log(users[2].isLoggedIn);   //index starts with 0
+console.log(Object.keys(users));
+console.log(Object.values(users));
+
+console.log(Object.keys(myOldPc));
+console.log(Object.values(myOldPc));
+console.log(Object.entries(myOldPc));   // 1st keys and 2nd valus
+
+console.log(myOldPc.hasOwnProperty("keyboards"));   // it is used to check if any object has or deprived of any values and return a boolean value
