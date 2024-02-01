@@ -54,3 +54,60 @@ LoggedIn("Bulla")   // here we have passed the agrument to the parameter and ret
 console.log(LoggedIn("Bulla"));
 console.log(LoggedIn());    //Primarily it will give undefined value though here we did not put any value, but set a default param in the function as Nulla
 console.log(LoggedIn("Gulla"));  
+
+
+
+// Business logics using function
+// Shoping cart Example
+
+// function AddCartPrice(cart) {
+//     return cart
+// }
+
+// console.log(AddCartPrice(200, 1000, 375, 11999, 5999));  // it will only give one value that is the first one - 200
+
+// using rest operator.
+
+function AddCartPrice(...cart) {
+    return cart
+}
+
+console.log(AddCartPrice(200, 1000, 375, 11999, 5999));     // it will return an array
+
+//pass object in function
+
+const user = {
+    userName: "abc",
+    passWord: 123
+}
+
+function userLogIn(anyObj) {
+    console.log(`hay ${anyObj.userName}! your password is ${anyObj.passWord}`);
+}
+
+userLogIn(user)
+
+const user02 = {
+    userName: "abc",
+    passWords: 123
+}
+
+function userLogIn02(anyObj) {
+    console.log(`hay ${anyObj.userName}! your password is ${anyObj.passWord}`);
+}
+
+// userLogIn02(user02)     //here the slight change in password to passwords will give undefined value
+userLogIn02({
+    userName: "def",
+    passWord: 456
+})
+
+//use arrays in function
+
+const myArray007 = [200,300,440,500,600]
+
+function arrayCheck(getArray) {
+    return getArray[3]
+}
+
+console.log(arrayCheck(myArray007));
