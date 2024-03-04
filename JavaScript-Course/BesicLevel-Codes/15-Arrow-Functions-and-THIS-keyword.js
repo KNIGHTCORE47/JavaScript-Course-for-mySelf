@@ -62,6 +62,10 @@ const objFunc02 = () => ({userName: "knight"});
 
 console.log(objFunc02());   // it will give undefined cause it is not the way to return an object, we have not wraped the object in paranthesis yet.
 
+const theArray = ["inr", "usd", "dnr", "yen"]
+
+theArray.forEach((items, index) => (console.log(items, index)));
+
 
 //Arrow function with explicite return
 
