@@ -81,3 +81,7 @@ const sumVal03 = (val1, val2) => {
 sumVal03(454, 4);
 
 //Arrow function with implicite return
+
+const sumVal04 = (val1, val2) => console.log(val1 / val2)
+
+sumVal03(454, 4);
