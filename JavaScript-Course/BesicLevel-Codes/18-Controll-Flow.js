@@ -232,3 +232,30 @@ let userEmailID03 = {};
 if (Object.keys(userEmailID03).length === 0) {
     console.log("user does not have a third email");
 }
+
+
+
+//Nullish Coalescing Operator[NCO] (??)
+
+//NOTE - NCO revolving around values like null and undefined.
+
+//it's perpose is to ensure that the code will run no matter what cause some times we need some valuses arriving from differnt servers, if there is a glitch, gap or return value is null or undefined the whole code structure will crash, thats why it is used.
+let responseServer;
+let responseServerFunction = ()=>{console.log("from Server1");}
+let ifRSFdoesNotShow = ()=>{console.log("from server2");}
+
+// responseServer = 5 ?? 10;
+responseServer = null ?? responseServerFunction();
+// responseServer = undefined ?? ifRSFdoesNotShow();
+// responseServer = null ?? responseServerFunction ?? ifRSFdoesNotShow();
+
+
+console.log(responseServer);
+
+
+
+//Terniary Operator (condition ? true : false)
+
+let chanceOfMakingOfHeraPheri03 = 100;
+
+chanceOfMakingOfHeraPheri03 >=80 ? console.log("banegi re Baba!") : console.log("Khopdi Todd Saale ka!");
