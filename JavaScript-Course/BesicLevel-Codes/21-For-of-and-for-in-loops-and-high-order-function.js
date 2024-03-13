@@ -190,5 +190,19 @@ const myArrayObject = [
 
 myArrayObject.forEach( (items) => {
     // console.log(items.languageName);
-    console.log(items.languageFileExtention);
+    // console.log(items.languageFileExtention);
 })
+
+//forEach loop has its own limitation like if hold it in a variable it does not return the values, but there is a way to use forEach that returns Example  - 
+
+const numArray01 = [1,2,3,4,5,6,7,8,9];
+
+const newNum = [];
+
+numArray01.forEach((items) => {
+    if (items >= 5) {
+        newNum.push(items)
+    }
+})
+
+console.log(newNum);
