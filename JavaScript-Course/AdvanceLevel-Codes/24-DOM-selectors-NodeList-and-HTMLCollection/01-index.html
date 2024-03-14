@@ -15,8 +15,7 @@
             height: 100%;
             width: 100%;
         }
-        .bg-red-400 {
-            background-color: rgba(255, 0, 0, 0.487);
+        .heroDiv {
             height: 100dvh;
             width: 100%;
             color: blanchedalmond;
@@ -24,35 +23,135 @@
     </style>
 </head>
 <body>
-    <div class="bg-red-400">
-        <h1 id="heroText" class="text-2xl"></h1>
+    <div class="heroDiv">
+        <h1 id="heroText" class="createdText"></h1>
         <h1></h1>
+        <h1 class="anotherH1">text123 <span style="display:none">Munna</span></h1>
         <p>Lorem ipsum dolor sit amet.</p>
+        <input type="text" name="userId" id="inputField">
+        <ul>
+            <li class="items">One</li>
+            <li class="items">Two</li>
+            <li class="items">Three</li>
+            <li class="items">Four</li>
+            <li class="items">Five</li>
+        </ul>
     </div>
 <script>
 
 /*********************DOM selectors*******************/
 
-//getElementById
+//.getElementById()
 
-console.log(document.getElementById("heroText"));
-console.log(document.getElementById("heroText").id);
+let heroh1Detailes = document.getElementById("heroText");
+
+console.log(heroh1Detailes);
+console.log(heroh1Detailes.id);
+console.log(heroh1Detailes.class);  //here heroh1Detailes.class return "undefined" cause behind the scene js potray "class" as "className" and in js class is a separate methode.
+console.log(heroh1Detailes.className);
 
 
-document.getElementById("heroText").style.borderRadius = "30px"
 
-document.querySelector("#heroText").textContent = "somethingDifferent";
 
-let holdVal = document.querySelectorAll("h1");       //document.querySelectorAll returns a "NodeList" similar to array but not entirely that is why we can not perform all the manupulation of array in this "NodeList"
+
+//.getAttribute()
+
+//NOTE - In .getAttribute() we have to pass the key then it will return a value
+
+console.log(heroh1Detailes.getAttribute("id"));
+
+console.log(heroh1Detailes.getAttribute("class"));
+
+
+
+
+
+//.setAttribute()
+
+//NOTE - setAttribute() works as key-value pairs, if any element has a previous attribute, setAttribute() will overwrite that with the new one, to tackle that we have to enter the existing one first and then the new one 
+
+// console.log(heroh1Detailes.setAttribute("class", "changeText"));     //here setAttribute() overwrite the class "createdText" with "changeText"
+
+console.log(heroh1Detailes.setAttribute("class", "createdText changeText"));    //to tackle
+
+
+heroh1Detailes.style.borderRadius = "30px";
+
+
+
+
+
+//.textContent - retrieve/add text from/inside from/of a designated element and if any element which may be styled with css in a way that it is not visible textContent can retrieve that portion of data too.
+let holdValOG = document.querySelector(".anotherH1")
+
+console.log(holdValOG.textContent);
+
+
+//.innerText - retrieve/add visible text from/inside from/of a designated element
+console.log(holdValOG.innerText);
+
+
+//.innerHTML - retrieve/add text as well as tags from/inside from/of a designated element, textContent and innerText does not support writing tags.
+console.log(holdValOG.innerHTML);
+
+
+
+
+
+//.querySelector()
+
+//NOTE - querySelector() is a method which can select both class/className and id in real time. Suppose any parent div has five h1 chlidren element, querySelector() will select the 1st chlidren.
+
+document.querySelector("#heroText").innerText = "somethingDifferent";
+
+//.querySelector() can also support varity of css selectors. Example - 
+
+console.log(document.querySelector('input[type="text"]'));
+
+let unorderList = document.querySelector("ul");
+
+unorderList.style.padding = "2dvw 4dvw"
+
+console.log(unorderList);
+
+let unorderListItem01 = unorderList.querySelector("li");
+
+unorderListItem01.style.color = "#98B3EB"
+
+console.log(unorderListItem01);
+
+
+
+
+
+//.querySelectorAll()
+
+//NOTE - document.querySelectorAll returns a "NodeList" similar to array but not entirely that is why we can not perform all the manupulation of array in this "NodeList"
+
+let holdVal = document.querySelectorAll("h1");       
 
 holdVal[0].style.backgroundColor = "black";
 holdVal[1].style.backgroundColor = "green";
 holdVal[1].textContent = "the second one";
+holdVal[2].style.backgroundColor = "blue";
 
-//to manupulate all the NodeList we use forEach to get every NodeList items in a loop and manupulate those items 
+//NOTE - to manupulate all the NodeList at the same time we use forEach to get every NodeList items in a loop and manupulate those items or we have to covert it into an array.
 
 holdVal.forEach((items) => items.style.padding = "4dvw 5dvw")
 
+
+
+
+
+//.getElementByClassName()
+
+//NOTE - document.getElementByClassName() returns a "HTMLCollection" similar to array but not entirely that is why we can not perform all the manupulation of array in this "HTMLCollection"
+
+let classVal = document.getElementsByClassName("heroDiv");
+
+console.log(classVal);      //here it will return a HTMLCollection similar to a array but not exactly.
+
+classVal[0].style.backgroundColor = "#212121"
 </script>
 </body>
 </html>
