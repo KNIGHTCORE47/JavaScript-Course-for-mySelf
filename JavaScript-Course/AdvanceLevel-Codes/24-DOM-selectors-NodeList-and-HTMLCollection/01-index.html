@@ -33,19 +33,26 @@
 
 /*********************DOM selectors*******************/
 
-    document.getElementById("heroText").style.borderRadius = "30px"
+//getElementById
 
-    document.querySelector("#heroText").textContent = "somethingDifferent";
+console.log(document.getElementById("heroText"));
+console.log(document.getElementById("heroText").id);
 
-    let holdVal = document.querySelectorAll("h1");       //document.querySelectorAll returns a "NodeList" similar to array but not entirely that is why we can not perform all the manupulation of array in this "NodeList"
 
-    holdVal[0].style.backgroundColor = "black";
-    holdVal[1].style.backgroundColor = "green";
-    holdVal[1].textContent = "the second one";
+document.getElementById("heroText").style.borderRadius = "30px"
 
-    //to manupulate all the NodeList we use forEach to get every NodeList items in a loop and manupulate those items 
+document.querySelector("#heroText").textContent = "somethingDifferent";
 
-    holdVal.forEach((items) => items.style.padding = "4dvw 5dvw")
+let holdVal = document.querySelectorAll("h1");       //document.querySelectorAll returns a "NodeList" similar to array but not entirely that is why we can not perform all the manupulation of array in this "NodeList"
+
+holdVal[0].style.backgroundColor = "black";
+holdVal[1].style.backgroundColor = "green";
+holdVal[1].textContent = "the second one";
+
+//to manupulate all the NodeList we use forEach to get every NodeList items in a loop and manupulate those items 
+
+holdVal.forEach((items) => items.style.padding = "4dvw 5dvw")
+
 </script>
 </body>
 </html>
