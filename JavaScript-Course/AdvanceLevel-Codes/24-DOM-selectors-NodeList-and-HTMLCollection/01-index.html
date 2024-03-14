@@ -36,6 +36,11 @@
             <li class="items">Four</li>
             <li class="items">Five</li>
         </ul>
+        <div class="h1Childs">
+            <h1>first</h1>
+            <h1>second</h1>
+            <h1>third</h1>
+        </div>
     </div>
 <script>
 
@@ -112,9 +117,7 @@ console.log(holdValOG.innerHTML);
 document.querySelector("#heroText").innerText = "somethingDifferent";
 
 //.querySelector() can also support varity of css selectors. Example - 
-
 console.log(document.querySelector('input[type="text"]'));
-
 
 
 
@@ -137,18 +140,23 @@ let unorderListlis = document.querySelectorAll("ul>li");
 unorderListlis[2].style.backgroundColor = "#334000";
 
 
-let holdVal = document.querySelectorAll("h1");       
-
+let holdVal = document.querySelectorAll(".heroDiv>h1");       
 holdVal[0].style.backgroundColor = "black";
 holdVal[1].style.backgroundColor = "green";
 holdVal[1].textContent = "the second one";
 holdVal[2].style.backgroundColor = "blue";
 
-//NOTE - to manupulate all the NodeList at the same time we use forEach to get every NodeList items in a loop and manupulate those items or we have to covert it into an array.
-
-Array.from()
-
 holdVal.forEach((items) => items.style.padding = "4dvw 5dvw")
+
+
+
+//NOTE - to manupulate all the "NodeList" at the same time we use forEach to get every "NodeList" items in a loop and manupulate those items or we have to covert it into an array.
+
+//covert The NodeList into an Array
+
+let myConvertArray = Array.from(unorderList);
+console.log(myConvertArray);
+myConvertArray.map((items) => items.style.color = "red")
 
 
 
@@ -156,13 +164,27 @@ holdVal.forEach((items) => items.style.padding = "4dvw 5dvw")
 
 //.getElementByClassName()
 
-//NOTE - document.getElementByClassName() returns a "HTMLCollection" similar to array but not entirely that is why we can not perform all the manupulation of array in this "HTMLCollection"
+//NOTE - document.getElementByClassName() returns a "HTMLCollection" similar to array but not entirely that is why we can not perform all the manupulation of array in this "HTMLCollection". To manupulate we have to covert it into an array.
 
 let classVal = document.getElementsByClassName("heroDiv");
-
 console.log(classVal);      //here it will return a HTMLCollection similar to a array but not exactly.
-
 classVal[0].style.backgroundColor = "#212121"
+
+
+
+//covert The HTMLCollection into an Array
+
+let classVal02 = document.getElementsByClassName("h1Childs");
+console.log(classVal02);      //here it will return a HTMLCollection similar to a array but not exactly.
+let myConvertArray02 = Array.from(classVal02);
+console.log(myConvertArray02);      //here it will return a array.
+myConvertArray02.map((items) => (
+    items.style.color = "black",
+    items.style.padding = "2dvw 3dvw",
+    items.style.fontSize = "0.75dvw",
+    items.style.backgroundColor = "yellow"
+    ))
+
 </script>
 </body>
 </html>
