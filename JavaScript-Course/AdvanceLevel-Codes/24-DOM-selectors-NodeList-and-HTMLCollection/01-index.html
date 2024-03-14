@@ -102,18 +102,19 @@ console.log(holdValOG.innerHTML);
 
 //NOTE - querySelector() is a method which can select both class/className and id in real time. Suppose any parent div has five h1 chlidren element, querySelector() will select the 1st chlidren.
 
+// let unorderList = document.querySelector("ul");
+// unorderList.style.padding = "2dvw 4dvw"
+// console.log(unorderList);
+// let unorderListItem01 = unorderList.querySelector("li");
+// unorderListItem01.style.color = "#98B3EB"
+// console.log(unorderListItem01);
+
 document.querySelector("#heroText").innerText = "somethingDifferent";
 
 //.querySelector() can also support varity of css selectors. Example - 
 
 console.log(document.querySelector('input[type="text"]'));
 
-let unorderList = document.querySelector("ul");
-unorderList.style.padding = "2dvw 4dvw"
-console.log(unorderList);
-let unorderListItem01 = unorderList.querySelector("li");
-unorderListItem01.style.color = "#98B3EB"
-console.log(unorderListItem01);
 
 
 
@@ -122,6 +123,19 @@ console.log(unorderListItem01);
 //.querySelectorAll()
 
 //NOTE - document.querySelectorAll returns a "NodeList" similar to array but not entirely that is why we can not perform all the manupulation of array in this "NodeList"
+
+let unorderList = document.querySelectorAll("ul");
+unorderList[0].style.padding = "2dvw 4dvw";
+unorderList[0].style.backgroundColor = "#668000";
+console.log(unorderList);
+unorderList.forEach((items) => {
+    return (items.style.color = "#98B3EB",
+    items.style.fontSize = "1.5dvw")
+});
+
+let unorderListlis = document.querySelectorAll("ul>li");
+unorderListlis[2].style.backgroundColor = "#334000";
+
 
 let holdVal = document.querySelectorAll("h1");       
 
