@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        .weekDays {
+            height: 100dvh;
+            width: 100%;
+            background-color: #212121;
+            color: lavenderblush;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weekDays">
+        <div class="sevevDays">MonDay</div>
+        <div class="sevevDays">TuesDay</div>
+        <div class="sevevDays">WednesDay</div>
+        <div class="sevevDays">ThursDay</div>
+        <div class="sevevDays">FriDay</div>
+        <div class="sevevDays">SaturDay</div>
+        <div class="sevevDays">SunDay</div>
+    </div>
+
+
+    <script>
+        //Select a Html element using .querySelector
+        const divElementParent = document.querySelector(".weekDays");
+        console.log(divElementParent);
+
+
+        //Properties - 
+        //*********01 .children************//
+
+        //NOTE - .children return an HTMLCollection
+
+        console.log(divElementParent.children);
+
+        //to access any individual values inside HTMLCollection 
+
+        console.log(divElementParent.children[1].innerHTML);
+        // divElementParent.children[2].style.color = "red";
+
+        //to access all values inside HTMLCollection method using for loop
+
+        for (let i = 0; i < divElementParent.children.length; i++) {
+            console.log(divElementParent.children[i].innerHTML);
+        }
+
+        //to access all values inside HTMLCollection convert it into an Array then using func like map, forEach etc.
+
+        const myCreateArray = Array.from(divElementParent.children);
+        console.log(myCreateArray);
+
+        const holdArrayValues = myCreateArray.map((items) => items.style.color = "green");
+        console.log(holdArrayValues);
+
+
+
+
+        //***********02 .firstElementChild***********//
+
+        console.log(divElementParent.firstElementChild);
+
+
+
+        //***********02 .lastElementChild***********//
+
+        console.log(divElementParent.lastElementChild);
+
+
+
+        //************03 .parentElement************//
+
+        //NOTE - To go from child to parent
+
+        const dayOne = document.querySelector(".sevevDays");
+        console.log(dayOne);
+
+        const parentElement = dayOne.parentElement;
+        console.log(parentElement);
+
+
+
+        //************04 .nextElementSibling***********//
+
+        //NOTE - To go from child to its sibling child
+
+        console.log(dayOne.nextElementSibling);
+
+
+
+        //**************05 .childNodes**********//
+
+        //NOTE - .childNodes return a NodeList. Here the NodeList has 15 values in it. NodeList also counts enters, line breaks etc meaning it counts every minute element that creates the DOM tree behind the scene in memory space.
+
+        console.log(divElementParent.childNodes);
+
+    </script>
+</body>
+
+</html>
