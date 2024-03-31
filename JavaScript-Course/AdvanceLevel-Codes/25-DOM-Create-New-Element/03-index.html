@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 03</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            background-color: #212121;
+        }
+
+        .main {
+            height: 100dvh;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+
+    </div>
+
+
+
+    <script>
+        const containerDiv = document.querySelector(".main");
+
+        const multiElement = (insideTexts) => {
+
+            // Create a multiple div element with the desired class
+
+            for (const texts of insideTexts) {
+                const createElement = document.createElement("div")
+
+                createElement.setAttribute("class", "heroDiv")
+
+                // console.log(createElement);
+
+                // Efficiently append all text nodes to the created div
+
+                const textNodeValues = document.createTextNode(texts)
+
+                createElement.appendChild(textNodeValues)
+
+                // Optionally set a default color (or allow customization)
+
+                createElement.style.color = "white";    // Or accept a color parameter
+
+                // Append the div to the container element
+
+                containerDiv.appendChild(createElement);
+            }
+
+        };
+
+        // Call the function with an array of text content
+
+        multiElement(["abcd", "efgh", "ijkl", "mnop"]);
+
+
+
+    </script>
+</body>
+
+</html>
