@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create and Edit Element in JS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            background-color: #212121;
+        }
+
+        .main {
+            color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+
+    </div>
+
+
+    <script>
+        const containerDiv = document.querySelector(".main");
+
+
+
+        //***************************Create an Element**************************//
+
+        //Unoptimized method to add an element inside of a designated html element using js 
+
+
+        const addElement = (textValue) => {
+
+            const newElement = document.createElement("h1")
+
+            newElement.innerHTML = textValue
+            //NOTE - using .innerHtml is an unoptimized method as it initiating DOM tree traversing every time cause we need to go that extreme end point in the document slowing the memory
+
+            containerDiv.appendChild(newElement)
+        }
+
+        addElement("SuperMan")
+        addElement("BatMan")
+
+
+
+        //Optimized methodb to insert an element inside of a designated html element
+
+
+        const addElementNew = (textValue) => {
+            const newElement = document.createElement("h1")
+
+            newElement.appendChild(document.createTextNode(textValue))
+
+            containerDiv.appendChild(newElement)
+
+        }
+        addElementNew("WonderWoman")
+        addElementNew("Flash")
+        addElementNew("GreenLantern")
+
+
+
+        //***************************Edit an Element********************************//
+
+
+        //method --> .reolaceWith
+
+
+        const changeHero = document.querySelector(".main>h1:last-child")
+        // console.log(changeHero);
+
+        const newElement = document.createElement("h1")     //here we have created a new h1 element with .createElement
+
+        newElement.appendChild(document.createTextNode("Cyborg"))   //here we have created (with .createTextNode) and injected (with .appendChild) the value that h1 will hold
+
+        changeHero.replaceWith(newElement)
+
+
+
+        //method --> .reolaceWith and with .textContent
+
+        
+        const changeHeroHierarchy = document.querySelector(".main>h1:first-child")
+        // console.log(changeHeroHierarchy);
+
+        const newElement02 = document.createElement("h1")     //here we have created a new h1 element with .createElement
+
+        newElement02.textContent = "BlackAdam";    // here we have use the textContent method cause the reference of that value is available
+
+        changeHeroHierarchy.replaceWith(newElement02)
+
+
+
+        //method --> with .outerHtml
+
+        
+        const changeHeroOwl = document.querySelector(".main>h1:nth-child(2)")
+
+        changeHeroOwl.outerHTML = "<h1>OwlMan</h1>";
+
+
+
+        //**************************Remove an Element********************//
+
+        const holdHeroName = document.querySelector(".main>h1:nth-child(5)")
+
+        holdHeroName.remove()
+
+    </script>
+</body>
+
+</html>
