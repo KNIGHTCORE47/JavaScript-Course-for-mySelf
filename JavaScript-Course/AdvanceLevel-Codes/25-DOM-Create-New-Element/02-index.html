@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 02</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        .main {
+            height: 100dvh;
+            width: 100%;
+            background-color: #212121;
+            color: lavenderblush;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+    </div>
+
+
+    <script>
+        const mainDiv = document.querySelector(".main");
+
+        const createElement = document.createElement("div");
+        console.log(createElement);
+
+        createElement.className = "heroDiv";
+        createElement.id = Math.floor(Math.random() * 10 + 1)
+
+        createElement.setAttribute("title", "theTitle")     //.setAttribute helps to create custom made attributes, it work as a key value pair. It is the optimized way to set an attribute.
+
+        createElement.style.backgroundColor = "green";
+        createElement.style.color = "#fff";
+        createElement.style.padding = "2dvw 6dvw";
+
+        //NOTE - In optimization wise .className, .innerText are slightly unoptimized method cause they first select the values then overwrites it.
+
+        // createElement.innerText = "the Hero";    //unoptimized method
+
+        const textValue = document.createTextNode("the Hero");
+        createElement.appendChild(textValue);
+
+        //NOTE - the div has created inside the memory, to show it in html file we have to append it inside.
+
+        mainDiv.appendChild(createElement);     //to show the div inside html file 
+
+    </script>
+
+</body>
+
+</html>
