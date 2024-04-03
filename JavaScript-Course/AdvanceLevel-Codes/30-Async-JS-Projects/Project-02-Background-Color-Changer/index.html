@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            background-color: #212121;
+            color: antiquewhite;
+        }
+
+        .main {
+            height: 100dvh;
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .buttonDiv {
+            margin-top: 2.5dvw;
+            display: flex;
+            gap: 3dvw;
+        }
+
+        button {
+            padding: 0.65dvw 1.7dvw;
+            font-size: 1dvw;
+            font-weight: 600;
+            color: aliceblue;
+
+            border: none;
+            border-radius: 20px;
+        }
+
+        #STOP {
+            background-color: rgb(185, 50, 50);
+        }
+
+        #START {
+            background-color: rgb(70, 185, 50);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Background Color Changer</h1>
+        <div class="buttonDiv">
+            <button id="STOP">STOP</button>
+            <button id="START">START</button>
+        </div>
+    </div>
+
+
+
+    <script>
+        const stopButton = document.querySelector("#STOP")
+        const startButton = document.querySelector("#START")
+        const htmlBody = document.querySelector("body")
+
+
+
+        function backgroundColorGenerator() {
+            let colorCode = "0123456789ABCDEF"      // here we generate the hex code values
+
+            let color = "#"
+
+            for (let i = 0; i < 6; i++) {
+                color += colorCode[Math.floor(Math.random() * 16)]
+            }
+            return color;
+        }
+
+        let intervalReference;
+
+        startButton.addEventListener("click", () => {
+            if (!intervalReference) {
+                intervalReference = setInterval(() => {
+                htmlBody.style.backgroundColor = backgroundColorGenerator()
+            }, 1000);
+            }
+        })
+
+        stopButton.addEventListener("click", () => {
+            clearInterval(intervalReference)
+            intervalReference = null
+        })
+
+    </script>
+</body>
+
+</html>

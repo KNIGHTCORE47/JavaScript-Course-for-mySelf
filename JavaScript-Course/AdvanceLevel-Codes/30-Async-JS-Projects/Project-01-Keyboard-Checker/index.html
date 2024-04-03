@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: #212121;
+            color: antiquewhite;
+        }
+
+        .main {
+            height: 100dvh;
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 3dvw;
+        }
+
+        .tableContainer>table,
+        th,
+        td {
+            border: 1px solid #e7e7e7;
+            text-align: center;
+            padding: 0.5dvw 1dvw;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <h1>Keyboard Checker</h1>
+        <div class="tableContainer">
+
+        </div>
+    </div>
+
+    <script>
+        const htmlBody = document.querySelector("body")
+        const tableContainer = document.querySelector(".tableContainer")
+
+        htmlBody.addEventListener("keydown", (event) => [
+            tableContainer.innerHTML = `
+        <table>
+                <tr>
+                    <th>Key</th>
+                    <th>keyCode</th>
+                    <th>Code</th>
+                </tr>
+                <tr>
+                    <td>${event.key === " " ? "Space" : event.key}</td>
+                    <td>${event.keyCode}</td>
+                    <td>${event.code}</td>
+                </tr>
+            </table>
+        `
+        ])
+    </script>
+</body>
+
+</html>

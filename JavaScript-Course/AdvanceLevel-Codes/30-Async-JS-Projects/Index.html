@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: #212121;
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="padding-bottom: 2.5dvw;">Async JavaScript</h1>
+    <button id="BTN1">STOP</button>
+
+    <button id="BTN2">START</button>
+
+
+    <script>
+        //*******************Async JavaScript coding methods***********************//
+
+        // setTimeout()
+
+        // let theFirstOutcome = setTimeout(() => {
+        //     console.log("Print after 2 second!");       // initiate the outcome after given time in miliseconds for only one time
+        // }, 2000);
+
+
+
+        /* NOTE - setTimeout(() => {})     here inside of setTimeout the function is called the HANDLER, that is why we can declare the func before and give the reference inside but ther is no need to initiate it. */
+
+
+
+        // let outcomeFunc = () => {
+        //     console.log("Print after 5 second!")
+        // }
+
+        // setTimeout(outcomeFunc, 5000)
+
+
+
+
+
+        //** want to stop the propagation of setTimeout using clearTimeout
+
+        // let changeName = setTimeout(() => {
+        //     let h1 = document.querySelector("h1")
+        //     let h1Inside = document.createTextNode("Async JavaScript Initials")
+
+        //     h1.replaceChildren(h1Inside)
+        // }, 3000)
+
+
+
+        // clearTimeout()
+
+        /* NOTE - in clearTimeout we can stop and clear the setTimeout by giving its reference */
+
+        // clearTimeout(changeName)
+
+        //***Stop setTimeout propagation over click a button
+
+        // document.getElementById("BTN1").addEventListener("click", () => {
+        //     clearTimeout(changeName)
+        //     console.log("clicked");
+        // })
+
+
+
+
+
+
+
+        // setInterval()
+
+        // let continueLog = setInterval(() => {
+        //     console.log("rakh teri maki! rakhh!");       // initiate the outcome after given time in miliseconds for every interval time
+        // }, 1000);
+
+         /* NOTE - setInterval(() => {})     here inside of setInterval the function is called the HANDLER, that is why we can declare the func before and give the reference inside but ther is no need to initiate it. */
+
+
+
+        //** want to stop the propagation of setInterval using clearInterval
+
+        // clearInterval()
+
+        /* NOTE - in clearInterval we can stop and clear the setInterval by giving its reference */
+
+        // clearInterval(continueLog)
+
+
+        let continueLog = (printArg) => {
+            console.log(printArg, Date.now());
+        }
+
+        let setReference
+
+        document.querySelector("#BTN2").addEventListener("click", () => {
+            setReference = setInterval(continueLog, 1000, "hello")      //in case setInterval we can also pass paramiter in the argument of a function
+        })
+
+        document.querySelector("#BTN1").addEventListener("click", () => {
+            clearInterval(setReference)
+        })
+
+
+
+    </script>
+</body>
+
+</html>
