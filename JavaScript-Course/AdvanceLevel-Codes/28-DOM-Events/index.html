@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .main {
+            height: 100dvh;
+            width: 100%;
+            background-color: #212121;
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 16.5dvw;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+
+        <div class="containerDiv">
+
+            <ul id="imageContainer">
+                <li>
+                    <img src="https://images.pexels.com/photos/1996337/pexels-photo-1996337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        id="horse" alt="horse">
+                </li>
+                <li>
+                    <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        id="dogs" alt="dogs">
+                </li>
+
+                <!-- NOTE - onClick method is not scalable for production level applications. -->
+
+
+                <!-- <li>
+                    <img src="https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        id="cats" alt="cats" onclick="alert('clicked on Cat image by direct onClick method')">
+                </li> -->
+
+
+                <li>
+                    <img src="https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        id="cats" alt="cats">
+                </li>
+                <li>
+                    <img src="https://images.pexels.com/photos/1829979/pexels-photo-1829979.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        id="monkey" alt="monkey">
+                </li>
+                <li>
+                    <a href="http://www.google.com" id="googleLink">Google</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        //******************Events*******************//
+
+        //NOTE - In JS evrey events runs sequentilly/in on by one order. But there is some code we can run in a asynchronous way for some reaseons, one of them is browser events. Browser events only invokes upon a specific browser activity.
+
+
+
+
+        // .onClick method --- it also a inefficient and problematic way cause onClick method does not provide more information about that elemnt upon onClick method is used
+
+        // const catImage = document.querySelector("#cats").onclick = () => {
+        //     alert('clicked on Cat image by direct onClick method')
+        // }
+
+
+
+        // .addEventListener method -- it is the most modern and scalable approach to invoke events. .addEventListener also give us more features and give us the ability of propagation
+
+
+        //NOTE - .addEventListener has three paramiters, those are - first => provide in strings event which will be listen, second => a callback function, third => false. The third paramiter default as false that is why moreorless we will get definition of .addEventListener like this -- .addEventListener("", () => {})
+
+        //Importance of the Third paramiter -- Third paramiter is very important but since the dafault value is false that is why we don't declare the value though in EVENT PROPOGATION as EVENT BUBBLING or EVENT CAPTURING are directly connected with this paramiter.
+
+
+        const catImage = document.querySelector("#cats");
+
+        // catImage.addEventListener("click", (event) => {
+        //     console.log(event);
+        //     console.log(event.timeStamp);
+        //     alert('clicked on Cat image by addEventListener method using click event')
+        // }, false)
+
+        //attachEvent()
+        //jQuery - on
+
+        //NOTE - most important event types => .type, .timestamp, .preventDefault()
+        //.target, .toElemet, .srcElement, .currentTarget,
+        //.clientX, .clientY, .screenX, .screenY
+        //.altkey, shiftkey, keycode
+
+
+
+        //***************EVENT PROPOGATION***********************//
+
+
+        //Event Bubbling - In event bubbling EVENT propagate from inner to the outer/lower to upper/child to parent
+
+
+        const imageContainer = document.querySelector("#imageContainer")
+        // console.log(imageContainer);
+
+        // imageContainer.addEventListener("click", (event) => {
+        //     console.log("clicked from Ul");
+        // }, false)
+
+        // catImage.addEventListener("click", (event) => {
+        //     console.log("clicked from image");
+        // }, false)
+
+
+
+
+        //Event Capturing - In event capturing EVENT propagate from outer to inner/upper to lower/parent to child
+
+
+        // imageContainer.addEventListener("click", (event) => {
+        //     console.log("clicked from Ul");
+        // }, true)
+
+        // catImage.addEventListener("click", (event) => {
+        //     console.log("clicked from image");
+        // }, true)
+
+
+
+
+        //.stopPropagation() method
+
+        // imageContainer.addEventListener("click", (event) => {
+        //     console.log("clicked from Ul");
+        // }, false)
+
+        //NOTE - The stopPropagation() method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases. It does not, however, prevent any default behaviors from occurring; for instance, clicks on links are still processed. If you want to stop those behaviors, see the preventDefault() method. It also does not prevent propagation to other event-handlers of the current element. If want to stop those, use stopImmediatePropagation().
+
+        // catImage.addEventListener("click", (event) => {
+        //     console.log("clicked from image");
+        //     event.stopPropagation()
+        // }, false)
+
+
+
+
+        // imageContainer.addEventListener("click", (event) => {
+        //     console.log("clicked from Ul");
+        // }, false)
+
+
+
+        // .parentNode -- gives the parent container of that element
+
+        // catImage.addEventListener("click", (event) => {
+        //     console.log("clicked from image");
+        //     console.log(event.target.parentNode);
+        // }, false)
+
+
+        // .remove() method and .removeChild() method
+
+        // imageContainer.addEventListener("click", (event) => {
+        //     console.log("clicked from Ul");
+        //     let deleteElement = event.target.parentNode;
+
+        //     deleteElement.remove()
+
+        //     // deleteElement.parentNode.removeChild(deleteElement)
+        // }, false)
+
+        // NOTE - But here in  this previous code has a bug cause apart from IMG(has LI as Parent) the parent of LI is UL thats why if click on LI Then the whole UL got removed, that's why we need strict checks
+
+
+        //NOTE - remove the bug here
+
+        imageContainer.addEventListener("click", (event) => {
+            console.log("clicked from Ul");
+            
+            if (event.target.tagName === 'IMG') {
+
+                let deleteElement = event.target.parentNode;
+                deleteElement.remove()
+
+            }
+        }, false)
+
+
+        document.querySelector("#googleLink").addEventListener("click", (event) => {
+            event.preventDefault();
+            console.log("clicked from GoogleLink");
+            event.stopPropagation();
+        })
+
+        
+    </script>
+</body>
+
+</html>
