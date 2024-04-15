@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #212121; color: aliceblue;">
+
+    <div class="topContainer">
+        <h1>Get RandomUser API with - randomuser.me </h1>
+        <span style="font-size: 2dvw; font-weight: 600; margin-right: 1.5dvw;">LINK :-</span>
+        <a style="text-decoration: none; color: antiquewhite;" href="http://randomuser.me">randomuser.me</a>
+
+        <h1>Get JSON data formatter with - jsonformatter.org </h1>
+        <span style="font-size: 2dvw; font-weight: 600; margin-right: 1.5dvw;">LINK :-</span>
+        <a style="text-decoration: none; color: antiquewhite;" href="http://jsonformatter.org">jsonformatter.org</a>
+
+
+
+
+
+        <h1>XMLHttpRequest Documentation and Methods</h1>
+
+
+
+        <p><span style="margin-right: 2dvw;">0</span>
+
+            UNSENT Client has been created. open() not called yet.</p>
+
+        <p><span style="margin-right: 2dvw;">1</span>
+
+            OPENED open() has been called.</p>
+
+        <p><span style="margin-right: 2dvw;">2</span>
+
+            HEADERS_RECEIVED send() has been called, and headers and status are available.</p>
+
+        <p><span style="margin-right: 2dvw;">3</span>
+
+            LOADING Downloading; responseText holds partial data.</p>
+
+        <p><span style="margin-right: 2dvw;">4</span>
+
+            (DONE) The operation is complete.</p>
+
+    </div>
+
+    
+
+
+    <script>
+        //*********************** API Request****************************//
+
+
+        // XMLHttpRequest method
+
+        //NOTE- API CALL with AJAX Request
+
+        const requestUrl = 'https://randomuser.me/api/'
+
+        let JsonData;
+
+        function APICall() {
+            const xhr = new XMLHttpRequest();
+
+            //NOTE .open() method has two paramiters - 01. method,  02. string. .open() method single handedly can't throw the request, to fullfill it and to call the .open() method we nedds .send() method.
+
+            xhr.open('GET', requestUrl)
+
+            //NOTE - help to monitor the continuous changing in state,.onreadystatechange type methods are also availabe in subscriber base models like appwrite, firebase etc for continuous monitoring. .onreadystatechange accepts a function as when the change in state occures what to do define within that function.
+
+            xhr.onreadystatechange = () => {
+                console.log(xhr.readyState);    //NOTE - help to track the changing in state
+
+                //NOTE - to detect a state
+
+
+                if (xhr.readyState === 4) {
+
+                    // console.log(responseText);      // here console.log(responseText) will give - Uncaught ReferenceError: responseText is not defined at xhr.onreadystatechange cause we have not povided the current context, to do that we have to use this keyword or defined that variable to define current context
+
+                    // const receviedData = xhr.responseText
+
+                    // console.log(receviedData);       // here we get the Returned values as in String format
+
+                    // console.log(typeof receviedData);
+
+                    // console.log(receviedData.id);       // beacuse the returned values are not an object but string thatis why we can not perform object methods to get inner object values.
+
+                    // const JsonData = JSON.parse(receviedData)       // here JSON.parse() is used to conver that RAW data into a JSON.
+
+                    // OR
+
+                    JsonData = JSON.parse(xhr.responseText)
+
+                    console.log(JsonData);
+                    console.log(typeof JsonData);
+                    console.log(JsonData.info.seed);
+                    console.log(JsonData.results[0].name.first);
+                    console.log(JsonData.results[0].picture.thumbnail);
+                }
+            }
+
+            xhr.send()
+        }
+
+        APICall()
+
+        const containerBody = document.querySelector("body")
+        const appendDiv = document.createElement("div")
+        appendDiv.setAttribute("class", "bottomContainer")
+        containerBody.appendChild(appendDiv)
+
+        appendDiv.style.height = "50dvh"
+        appendDiv.style.width = "100%"
+        appendDiv.style.backgroundColor = "black"
+
+        const imageUrl = JsonData.results[0].picture.thumbnail;
+
+        document.querySelector(".bottomContainer").innerHTML = `<img style="height: 50px; width: 60px;" src="${imageUrl}">`
+
+
+
+    </script>
+
+    <!-- <script>
+        const requestUrl = 'https://randomuser.me/api/';
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', requestUrl); // Use uppercase for HTTP methods
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) { // Request completed
+                if (xhr.status === 200) { // Successful response
+                    const receivedData = xhr.responseText;
+                    console.log(receivedData);
+                    console.log(typeof receivedData); // Should be "string"
+                    // Parse the JSON data (if applicable)
+                    const jsonData = JSON.parse(receivedData);
+                    console.log(jsonData); // Access data from the JSON object
+                    console.log(jsonData.login); // Access data from the JSON object
+                } else {
+                    console.error(`Error: Request failed with status ${xhr.status}`);
+                }
+            }
+        };
+
+        xhr.send();
+
+    </script> -->
+
+</body>
+
+</html>
